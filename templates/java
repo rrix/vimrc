@@ -1,0 +1,17 @@
+/******************************************************************************
+ * Assignment #: 
+ *         Name: 
+ *    StudentID: 
+ *      Lecture: 
+ *  Description: 
+ *****************************************************************************/
+
+import java.util.Scanner;  // use the Scanner class located in the "java.util" directory
+
+public class Assignment1 {
+  public static void main (String[] args) {
+
+  }
+}
+
+
