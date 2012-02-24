@@ -20,12 +20,12 @@ inoremap <buffer> <C-L>
  \:s/\[]//e
  \0f{y%o\endpO
 
-inoremap <buffer> { {}i
-inoremap <buffer> [ []i
-inoremap <buffer> ^ ^{}i
-inoremap <buffer> _ _{}i
-inoremap <buffer> \( \(\)hi
-inoremap <buffer> \[ \[\]hi
+"inoremap <buffer> { {}i
+"inoremap <buffer> [ []i
+"inoremap <buffer> ^ ^{}i
+"inoremap <buffer> _ _{}i
+"inoremap <buffer> \( \(\)hi
+"inoremap <buffer> \[ \[\]hi
 
 " Note: v_<C-L>
 " For this to work, you have to write on a blank line the name of
@@ -64,5 +64,5 @@ function! CleverSpace()
     normal x
   endif
 endfunction
-inoremap <Space> <Space>:call CleverSpace()<LF>a
+"inoremap <Space> <Space>:call CleverSpace()<LF>a
 
