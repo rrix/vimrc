@@ -24,8 +24,10 @@ set numberwidth=3       " Three digit line numbers
 
 " Formatting options
 set et                  " Tabs become spaces
-set sw=4                " Autoident uses 4 space tabs
-set sts=4               " Tabs become 4 spaces while editing
+set sw=2                " Autoident uses 4 space tabs
+set sts=2               " Tabs become 4 spaces while editing
+set fo+=l               " Don't wrap long lines if they're long when you enter insert mode
+set fo+=2               " Use second line for indent
 
 " Search related variables
 set is                  " Jump to result while searching
@@ -40,6 +42,9 @@ set nohls               " Don't highlight search results
 au BufRead,BufNewFile *                 set tw=78
 au BufRead,BufNewFile *.cpp,*.h,*rc     set tw=0
 
+" Pathogen plugin manager
+call pathogen#infect()
+
 " Sources
 " TODO: Filetype.vim plugin
 au BufNewFile,BufRead *.cpp,*.h source ~/.vim/cpp.vimrc
@@ -48,9 +53,7 @@ au BufNewFile,BufRead *.pde source ~/.vim/plugin/arduino.vim
 au BufNewFile,BufRead *.rb,*.haml,*.erb source ~/.vim/ruby.vim
 au BufNewFile,BufRead *.tex source ~/.vim/tex.vimrc
 au BufNewFile,BufRead /home/rrix/dev/trunk/* source ~/dev/trunk/kdesdk/scripts/kde-devel-vim.vim
-
-" Pathogen plugin manager
-call pathogen#infect()
+au BufNewFile,BufRead *.js,*.json,*/*enyo* source ~/.vim/plugin/json.vim
 
 " When editing a file, always jump to the last cursor position
 autocmd BufReadPost *
@@ -59,11 +62,12 @@ autocmd BufReadPost *
 \ endif
 
 " start with spec file template
-au BufNewFile *.cpp  0r ~/.vim/templates/cpp
-au BufNewFile *.h    0r ~/.vim/templates/h
-au BufNewFile *.java 0r ~/.vim/templates/java
-au BufNewFile *.spec 0r /usr/share/vim/vimfiles/template.spec
-au BufNewFile *.tex  0r ~/.vim/templates/tex
+au BufNewFile *.cpp                        0r ~/.vim/templates/cpp
+au BufNewFile *.h                          0r ~/.vim/templates/h
+au BufNewFile *.java                       0r ~/.vim/templates/java
+au BufNewFile *.spec                       0r /usr/share/vim/vimfiles/template.spec
+au BufNewFile *.tex                        0r ~/.vim/templates/tex
+au BufNewFile ~/dev/blag/_posts/*.markdown 0r ~/.vim/templates/blagpost
 
 " Open the URL under the cursor
 function! HandleURI()
@@ -78,10 +82,9 @@ endfunction
 map <Leader>w :call HandleURI()<CR>
 
 " Enable code folding
-set foldmethod=indent   "fold based on indent
-set foldnestmax=10      "deepest fold is 10 levels
-set nofoldenable        "dont fold by default
-set foldlevel=1         "this is just what i use
+set foldmethod=syntax " fold based on indent
+set foldnestmax=5     " deepest fold is 10 levels
+set foldlevel=2       " this is just what i use
 
 " NERDTree
 " autocmd vimenter * if !argc() | NERDTree | endif
@@ -96,3 +99,16 @@ vmap <Leader>s :Vissort<CR>
 " mark 'misplaced' tab characters
 set listchars=tab:·\ ,trail:·
 set list
+
+" visual shifting (builtin-repeat)
+vnoremap < <gv
+vnoremap > >gv
+
+" Jekyll
+let g:jekyll_path = "/home/rrix/dev/blag/"
+map <Leader>jb  :JekyllBuild<CR>
+map <Leader>jn  :JekyllPost<CR>
+map <Leader>jl  :JekyllList<CR>
+
+" set background=dark
+" colorscheme solarized
