@@ -78,3 +78,4 @@ endif
 
 set filetype=json
 set sw=2
+set foldmethod=indent
