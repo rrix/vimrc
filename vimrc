@@ -38,6 +38,12 @@ set ls=2                " Always draw a status line
 set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %{getcwd()}\ \ \ Line:\ %l/%L:%c " Sexy Status Line
 set number              " Show line numberse
 set numberwidth=3       " Three digit line numbers
+
+" Solarized {{{3
+let g:solarized_termtrans=1
+let g:solarized_menu=1
+colorscheme solarized
+" }}}3
 " }}}2
 
 " ==== Formatting options ==== {{{2
@@ -56,7 +62,6 @@ set is                  " Jump to result while searching
 set nohls               " Don't highlight search results
 " }}}2
 
-" TODO: Filetype.vim plugin
 " ==== Filetype Sources ==== {{{2
 au BufNewFile,BufRead *.cpp,*.h                    source ~/.vim/plugin/cpp.vimrc
 au BufNewFile,BufRead *.java                       source ~/.vim/plugin/java.vimrc
@@ -67,6 +72,7 @@ au BufNewFile,BufRead *.tex                        source ~/.vim/plugin/tex.vimr
 au BufNewFile,BufRead /home/rrix/Documents/blag    source ~/.vim/plugin/blag.vim
 au BufNewFile,BufRead /home/rrix/Documents/hslblag source ~/.vim/plugin/hslblag.vim
 au BufNewFile,BufRead /home/rrix/dev/trunk/*       source ~/dev/trunk/kdesdk/scripts/kde-devel-vim.vim
+au BufNewFile,BufRead *.md                         set filetype=markdown
 
 " start with spec file template
 au BufNewFile *.cpp                        0r ~/.vim/templates/cpp
@@ -101,7 +107,7 @@ set foldlevel=2       " this is just what i use
 
 " ==== Align Magick ==== {{{2
 call Align#AlignCtrl( "Wlp0P0" )
-vmap <Leader>a :Align 
+vmap <Leader>] :Align 
 " TODO: Make this smarter with AlignCtrl
 " }}}2
 
@@ -146,5 +152,12 @@ set list
 " visual shifting (builtin-repeat)
 vnoremap < <gv
 vnoremap > >gv
+"}}}2
+
+" ====  Gist configurations ==== {{{2
+let g:github_user                  = "rrix"
+let g:github_token                 = "b76cb7f7cdd411c50da0dc1d813f6928"
+let g:gist_open_browser_after_post = 1
+let g:gist_browser_command         = "kde-open %URL%"
 "}}}2
 " }}}1
