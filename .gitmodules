@@ -1,8 +1,8 @@
 [submodule "bundle/jekyll.vim"]
 	path = bundle/jekyll.vim
 	url = https://github.com/csexton/jekyll.vim
-[submodule "bundle/command-t"]
-	path = bundle/command-t
+[submodule "bundle/Command-T"]
+	path = bundle/Command-T
 	url = https://github.com/vim-scripts/Command-T.git
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
