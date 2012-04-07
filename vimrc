@@ -40,9 +40,9 @@ set number              " Show line numberse
 set numberwidth=3       " Three digit line numbers
 
 " Solarized {{{3
-let g:solarized_termtrans=1
-let g:solarized_menu=1
-colorscheme solarized
+" let g:solarized_termtrans=1
+" let g:solarized_menu=1
+" colorscheme solarized
 " }}}3
 " }}}2
 
