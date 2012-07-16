@@ -10,6 +10,9 @@ set viminfo=!,'20,\"50  " read/write a .viminfo file, don't store more
                         " than 50 lines of registers, store globals
 set history=50          " keep 50 lines of command line history
 set dir=/var/tmp,/tmp,.
+set visualbell          " Use a visual bell instead of \a since gvim sucks at \a
+let g:mapleader=" "
+let mapleader=" "
 
 if exists('+undofile')
   set undodir=~/.vim/undodir
@@ -27,63 +30,65 @@ autocmd BufReadPost *
 " }}}2
 
 " ==== Appearance related variables ==== {{{2
-set ruler               " show the cursor position all the time
+set ruler                                                               "show the cursor position all the time
 syntax on
-set so=6                " Number of liness to keep above and below the cursor
-set pt=<F2>             " Toggle paste mode on F2
-let &guicursor = &guicursor . ",a:blinkon0" " Don't wake up system with blinking cursor:
-filetype plugin on
-set lbr                 " break on words rather than lines when wrapping in editor
-set ls=2                " Always draw a status line
-set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %{getcwd()}\ \ \ Line:\ %l/%L:%c " Sexy Status Line
-set number              " Show line numberse
-set numberwidth=3       " Three digit line numbers
+set so=6                                                                "Number of liness to keep above and below the cursor
+set pt=<F2>                                                             "Toggle paste mode on F2
+let &guicursor = &guicursor . ",a:blinkon0"                             "Don't wake up system with blinking cursor:
+set lbr                                                                 "break on words rather than lines when wrapping in editor
+set ls=2                                                                "Always draw a status line
+set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %{getcwd()}\ \ \ Line:\ %l/%L:%c "Sexy Status Line
+set number                                                              "Show line numberse
+set numberwidth=3                                                       "Three digit line numbers
+
+set cursorcolumn                                                        "highlight column cursor is in
+set cursorline                                                          "highlight line cursor is in
 
 " Solarized {{{3
-" let g:solarized_termtrans=1
-" let g:solarized_menu=1
-" colorscheme solarized
+let g:solarized_termtrans=1
+let g:solarized_menu=0
+let g:solarized_contrast='high'
+let g:solarized_visibility='high'
+set background=dark
+colorscheme solarized
+" }}}3
+" Gvim {{{3
+set guifont=OxygenMono
 " }}}3
 " }}}2
 
 " ==== Formatting options ==== {{{2
-set et                  " Tabs become spaces
-set sw=2                " Autoident uses 4 space tabs
-set sts=2               " Tabs become 4 spaces while editing
-set fo+=l               " Don't wrap long lines if they're long when you enter insert mode
-set fo+=2               " Use second line for indent
-set tw=78               " Wrap at 78 characters
+set et    " Tabs become spaces
+set sw=2  " Autoident uses 4 space tabs
+set sts=2 " Tabs become 4 spaces while editing
+set fo+=l " Don't wrap long lines if they're long when you enter insert mode
+set fo+=2 " Use second line for indent
+set tw=78 " Wrap at 78 characters
 " }}}2
 
 " ==== Search related variables==== {{{2
 set is                  " Jump to result while searching
-" set ic                  " Ignore case when searching
-" set scs                 " Don't ignore case if you change case
+set ic                  " Ignore case when searching
+set scs                 " Don't ignore case if you change case
 set nohls               " Don't highlight search results
 " }}}2
 
 " ==== Filetype Sources ==== {{{2
-au BufNewFile,BufRead *.cpp,*.h                    source ~/.vim/plugin/cpp.vimrc
-au BufNewFile,BufRead *.java                       source ~/.vim/plugin/java.vimrc
-au BufNewFile,BufRead *.js,*.json                  source ~/.vim/plugin/json.vim
-au BufNewFile,BufRead *.pde                        source ~/.vim/plugin/arduino.vim
-au BufNewFile,BufRead *.rb,*.haml,*.erb            source ~/.vim/plugin/ruby.vim
-au BufNewFile,BufRead *.tex                        source ~/.vim/plugin/tex.vimrc
-au BufNewFile,BufRead /home/rrix/Documents/blag    source ~/.vim/plugin/blag.vim
-au BufNewFile,BufRead /home/rrix/Documents/hslblag source ~/.vim/plugin/hslblag.vim
-au BufNewFile,BufRead /home/rrix/dev/trunk/*       source ~/dev/trunk/kdesdk/scripts/kde-devel-vim.vim
-au BufNewFile,BufRead *.md                         set filetype=markdown
+filetype plugin on
+au! BufNewFile,BufRead *.rb,*.haml,*.erb            source ~/.vim/ftplugin/ruby.vim
+au! BufNewFile,BufRead /home/rrix/Documents/blag    source ~/.vim/plugin/blag.vim
+au! BufNewFile,BufRead /home/rrix/Documents/hslblag source ~/.vim/plugin/hslblag.vim
 
-" start with spec file template
-au BufNewFile *.cpp                        0r ~/.vim/templates/cpp
-au BufNewFile *.h                          0r ~/.vim/templates/h
-au BufNewFile *.java                       0r ~/.vim/templates/java
-au BufNewFile *.spec                       0r /usr/share/vim/vimfiles/template.spec
-au BufNewFile *.tex                        0r ~/.vim/templates/tex
+au! BufNewFile,BufRead *.pde                        set filetype=arduino
+" au! BufNewFile,BufRead *.js,*.json                  set filetype=json
+au! BufNewFile,BufRead *.md                         set filetype=markdown
+au! BufNewFile,BufRead *.scad                       set filetype=openscad
+
+au! Filetype html,xml,xsl                           source ~/.vim/scripts/closetag.vim
 
 " Random bits
-au BufRead *vimrc                          set foldmethod=marker
-au BufRead *vimrc                          set foldlevel=1
+source /home/rrix/dev/kde-devel-scripts/kde-devel-vim.vim
+source ~/.vim/plugin/org.kde.activities.vim
 " }}}2
 
 " ==== Open the URL under the cursor ==== {{{2
@@ -106,24 +111,13 @@ set foldlevel=2       " this is just what i use
 " }}}2
 
 " ==== Align Magick ==== {{{2
-call Align#AlignCtrl( "Wlp0P0" )
-vmap <Leader>] :Align 
+call Align#AlignCtrl( "Wlp1P0" )
+vmap a :Align 
 " TODO: Make this smarter with AlignCtrl
 " }}}2
 
-" ==== Wrappy Stuff for Visual Mode ==== {{{2
-vmap ' S'
-vmap " S"
-vmap ( S)
-vmap ) S(
-vmap { S{
-vmap } S}
-vmap [ S]
-vmap ] S[
-" }}}2
-
 " ==== Abbreviations ==== {{{2
-ab soap save_and_open_page
+iab soap save_and_open_page
 " }}}2
 
 " ==== Random Magick ==== {{{2
@@ -149,15 +143,12 @@ vmap <Leader>s :Vissort<CR>
 set listchars=tab:·\ ,trail:·
 set list
 
-" visual shifting (builtin-repeat)
-vnoremap < <gv
-vnoremap > >gv
+" Convert ruby 1.8-style hashrockets in to 1.9 style
+nmap <Leader>h :s/\:\([a-zA-Z_]*\)\s=>/\1\:/g<cr>
+vmap <Leader>q :Align \s:\l*
+
+" Jetpack http://bairuidahu.deviantart.com/art/Flying-vs-Cycling-261641977
+nnoremap <Leader>l :ls<CR>:b<space>
 "}}}2
 
-" ====  Gist configurations ==== {{{2
-let g:github_user                  = "rrix"
-let g:github_token                 = "b76cb7f7cdd411c50da0dc1d813f6928"
-let g:gist_open_browser_after_post = 1
-let g:gist_browser_command         = "kde-open %URL%"
-"}}}2
 " }}}1
