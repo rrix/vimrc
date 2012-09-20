@@ -44,16 +44,18 @@ set numberwidth=3                                                       "Three d
 set cursorcolumn                                                        "highlight column cursor is in
 set cursorline                                                          "highlight line cursor is in
 
-" Solarized {{{3
-let g:solarized_termtrans=1
-let g:solarized_menu=0
-let g:solarized_contrast='high'
-let g:solarized_visibility='high'
-set background=dark
-colorscheme solarized
+" Solarized (disabled) {{{3
+colorscheme vividchalk
+" let g:solarized_termtrans=1
+" let g:solarized_menu=0
+" let g:solarized_contrast='high'
+" let g:solarized_visibility='high'
+" set background=dark
+" colorscheme solarized
 " }}}3
 " Gvim {{{3
 set guifont=OxygenMono
+set guioptions-=T
 " }}}3
 " }}}2
 
@@ -61,6 +63,7 @@ set guifont=OxygenMono
 set et    " Tabs become spaces
 set sw=2  " Autoident uses 4 space tabs
 set sts=2 " Tabs become 4 spaces while editing
+set ts=2  " Tabs are two if they're in the file
 set fo+=l " Don't wrap long lines if they're long when you enter insert mode
 set fo+=2 " Use second line for indent
 set tw=78 " Wrap at 78 characters
@@ -81,7 +84,7 @@ au! BufNewFile,BufRead /home/rrix/Documents/hslblag source ~/.vim/plugin/hslblag
 
 au! BufNewFile,BufRead *.pde                        set filetype=arduino
 " au! BufNewFile,BufRead *.js,*.json                  set filetype=json
-au! BufNewFile,BufRead *.md                         set filetype=markdown
+" au! BufNewFile,BufRead *.md                         set filetype=markdown
 au! BufNewFile,BufRead *.scad                       set filetype=openscad
 
 au! Filetype html,xml,xsl                           source ~/.vim/scripts/closetag.vim
@@ -140,7 +143,8 @@ map <Leader>f :Ggrep
 vmap <Leader>s :Vissort<CR>
 
 " mark 'misplaced' tab characters
-set listchars=tab:·\ ,trail:·
+" set listchars=tab:·\ ,trail:·
+set listchars=tab:\·\ ,trail:·
 set list
 
 " Convert ruby 1.8-style hashrockets in to 1.9 style
@@ -149,6 +153,10 @@ vmap <Leader>q :Align \s:\l*
 
 " Jetpack http://bairuidahu.deviantart.com/art/Flying-vs-Cycling-261641977
 nnoremap <Leader>l :ls<CR>:b<space>
+
+" vim-notes Directory
+let g:notes_directory = '~/Dropbox/TapNote'
+let g:notes_suffix = '.txt'
 "}}}2
 
 " }}}1
