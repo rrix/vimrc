@@ -13,6 +13,7 @@ set dir=/var/tmp,/tmp,.
 set visualbell          " Use a visual bell instead of \a since gvim sucks at \a
 let g:mapleader=" "
 let mapleader=" "
+set autochdir
 
 if exists('+undofile')
   set undodir=~/.vim/undodir
@@ -85,7 +86,7 @@ au! BufNewFile,BufRead /home/rrix/Documents/hslblag source ~/.vim/plugin/hslblag
 au! BufNewFile,BufRead *.pde                        set filetype=arduino
 " au! BufNewFile,BufRead *.js,*.json                  set filetype=json
 " au! BufNewFile,BufRead *.md                         set filetype=markdown
-au! BufNewFile,BufRead *.scad                       set filetype=openscad
+au! BufNewFile,BufRead *.escad,*.scad                       set filetype=openscad
 
 au! Filetype html,xml,xsl                           source ~/.vim/scripts/closetag.vim
 
