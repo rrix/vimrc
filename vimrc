@@ -86,12 +86,15 @@ au! BufNewFile,BufRead /home/rrix/Documents/hslblag source ~/.vim/plugin/hslblag
 au! BufNewFile,BufRead *.pde                        set filetype=arduino
 " au! BufNewFile,BufRead *.js,*.json                  set filetype=json
 " au! BufNewFile,BufRead *.md                         set filetype=markdown
-au! BufNewFile,BufRead *.escad,*.scad                       set filetype=openscad
+au! BufNewFile,BufRead *.escad,*.scad               set filetype=openscad
 
-au! Filetype html,xml,xsl                           source ~/.vim/scripts/closetag.vim
+au! FileType ruby,eruby                             set omnifunc=rubycomplete#Complete
+au! FileType ruby,eruby                             let g:rubycomplete_buffer_loading = 1
+au! FileType ruby,eruby                             let g:rubycomplete_rails = 1
+au! FileType ruby,eruby                             let g:rubycomplete_classes_in_global = 1
 
 " Random bits
-source /home/rrix/dev/kde-devel-scripts/kde-devel-vim.vim
+source /home/rrix/dev/3rd-party/kde-devel-scripts/kde-devel-vim.vim
 source ~/.vim/plugin/org.kde.activities.vim
 " }}}2
 
