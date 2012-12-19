@@ -52,3 +52,6 @@
 [submodule "bundle/vim-qml"]
 	path = bundle/vim-qml
 	url = git://github.com/peterhoeg/vim-qml.git
+[submodule "bundle/vim-wiki"]
+	path = bundle/vim-wiki
+	url = git://github.com/vim-scripts/vimwiki.git
