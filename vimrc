@@ -93,6 +93,11 @@ au! FileType ruby,eruby                             let g:rubycomplete_buffer_lo
 au! FileType ruby,eruby                             let g:rubycomplete_rails = 1
 au! FileType ruby,eruby                             let g:rubycomplete_classes_in_global = 1
 
+augroup vimwiki
+  au! BufRead /home/rrix/vimwiki/index.wiki  !git pull
+  au! BufWritePost /home/rrix/vimwiki/*  !git add <afile>;git commit -m "autocommit";git push
+augroup
+
 " Random bits
 source /home/rrix/dev/3rd-party/kde-devel-scripts/kde-devel-vim.vim
 source ~/.vim/plugin/org.kde.activities.vim
@@ -161,6 +166,8 @@ nnoremap <Leader>l :ls<CR>:b<space>
 " vim-notes Directory
 let g:notes_directory = '~/Dropbox/TapNote'
 let g:notes_suffix = '.txt'
-"}}}2
 
+" Vimwiki directory
+let g:vimwiki_list = [{'path': '~/Dropbox/TapNote/'}]
+"}}}2
 " }}}1
