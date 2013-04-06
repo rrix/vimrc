@@ -13,7 +13,7 @@ set dir=/var/tmp,/tmp,.
 set visualbell          " Use a visual bell instead of \a since gvim sucks at \a
 let g:mapleader=" "
 let mapleader=" "
-set autochdir
+" set autochdir
 
 if exists('+undofile')
   set undodir=~/.vim/undodir
@@ -45,15 +45,15 @@ set numberwidth=3                                                       "Three d
 set cursorcolumn                                                        "highlight column cursor is in
 set cursorline                                                          "highlight line cursor is in
 
-" Solarized (disabled) {{{3
-colorscheme vividchalk
-" let g:solarized_termtrans=1
-" let g:solarized_menu=0
-" let g:solarized_contrast='high'
-" let g:solarized_visibility='high'
-" set background=dark
-" colorscheme solarized
+" Solarized {{{3
+let g:solarized_termtrans=1
+let g:solarized_menu=1
+let g:solarized_contrast='high'
+let g:solarized_visibility='high'
+set background=light
+colorscheme solarized
 " }}}3
+
 " Gvim {{{3
 set guifont=OxygenMono
 set guioptions-=T
@@ -92,11 +92,6 @@ au! FileType ruby,eruby                             set omnifunc=rubycomplete#Co
 au! FileType ruby,eruby                             let g:rubycomplete_buffer_loading = 1
 au! FileType ruby,eruby                             let g:rubycomplete_rails = 1
 au! FileType ruby,eruby                             let g:rubycomplete_classes_in_global = 1
-
-augroup vimwiki
-  au! BufRead /home/rrix/vimwiki/index.wiki  !git pull
-  au! BufWritePost /home/rrix/vimwiki/*  !git add <afile>;git commit -m "autocommit";git push
-augroup
 
 " Random bits
 source /home/rrix/dev/3rd-party/kde-devel-scripts/kde-devel-vim.vim
