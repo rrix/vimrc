@@ -50,8 +50,9 @@ let g:solarized_termtrans=1
 let g:solarized_menu=1
 let g:solarized_contrast='high'
 let g:solarized_visibility='high'
-set background=light
-colorscheme solarized
+"set background=light
+"colorscheme solarized
+colorscheme default
 " }}}3
 
 " Gvim {{{3
