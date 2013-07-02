@@ -50,9 +50,9 @@ let g:solarized_termtrans=1
 let g:solarized_menu=1
 let g:solarized_contrast='high'
 let g:solarized_visibility='high'
-"set background=light
-"colorscheme solarized
-colorscheme default
+set background=dark
+colorscheme solarized
+"colorscheme default
 " }}}3
 
 " Gvim {{{3
@@ -130,7 +130,7 @@ iab soap save_and_open_page
 
 " ==== Random Magick ==== {{{2
 " escape on kj
-imap kj <C-[>
+" imap kj <C-[>
 
 " <leader>e creates an edit command with your current file filled in
 map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
@@ -157,7 +157,7 @@ nmap <Leader>h :s/\:\([a-zA-Z_]*\)\s=>/\1\:/g<cr>
 vmap <Leader>q :Align \s:\l*
 
 " Jetpack http://bairuidahu.deviantart.com/art/Flying-vs-Cycling-261641977
-nnoremap <Leader>l :ls<CR>:b<space>
+" nnoremap <Leader>l :ls<CR>:b<space>
 
 " vim-notes Directory
 let g:notes_directory = '~/Dropbox/TapNote'
@@ -165,5 +165,17 @@ let g:notes_suffix = '.txt'
 
 " Vimwiki directory
 let g:vimwiki_list = [{'path': '~/Dropbox/TapNote/'}]
+
+" Ctrl-P settings
+let g:ctrlp_map = '<Leader>l'
+let g:ctrlp_cmd = 'CtrlPBuffer'
+let g:ctrlp_user_command = {
+  \ 'types': {
+    \ 1: ['.git', 'cd %s && git ls-files'],
+    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+    \ },
+  \ 'fallback': 'find %s -type f'
+  \ }
+
 "}}}2
 " }}}1
