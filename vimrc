@@ -168,7 +168,7 @@ let g:vimwiki_list = [{'path': '~/Dropbox/TapNote/'}]
 
 " Ctrl-P settings
 let g:ctrlp_map = '<Leader>l'
-let g:ctrlp_cmd = 'CtrlPBuffer'
+let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_user_command = {
   \ 'types': {
     \ 1: ['.git', 'cd %s && git ls-files'],
