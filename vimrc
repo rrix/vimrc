@@ -177,5 +177,8 @@ let g:ctrlp_user_command = {
   \ 'fallback': 'find %s -type f'
   \ }
 
+" Syntastic settings
+let g:syntastic_python_checkers = ['flake8', 'pep8', 'pyflakes']
+
 "}}}2
 " }}}1
