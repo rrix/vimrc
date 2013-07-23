@@ -180,5 +180,9 @@ let g:ctrlp_user_command = {
 " Syntastic settings
 let g:syntastic_python_checkers = ['flake8', 'pep8', 'pyflakes']
 
+" Punish me
+nnoremap <expr> A Penalty('A')
+inoremap <expr> <cr> Punish("\<cr>")
+
 "}}}2
 " }}}1
