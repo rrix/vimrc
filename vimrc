@@ -38,7 +38,7 @@ set pt=<F2>                                                             "Toggle 
 let &guicursor = &guicursor . ",a:blinkon0"                             "Don't wake up system with blinking cursor:
 set lbr                                                                 "break on words rather than lines when wrapping in editor
 set ls=2                                                                "Always draw a status line
-set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %{getcwd()}\ \ \ Line:\ %l/%L:%c "Sexy Status Line
+set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %{getcwd()}\ \ \ Line:\ %l/%L:%c "Pretty Status Line
 set number                                                              "Show line numberse
 set numberwidth=3                                                       "Three digit line numbers
 
