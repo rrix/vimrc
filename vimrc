@@ -1,4 +1,31 @@
 " {{{1
+" ==== Sane defaults ==== {{{2
+if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
+   set fileencodings=ucs-bom,utf-8,latin1
+endif
+
+set nocompatible        " Use Vim defaults (much better!)
+set ai                  " always set autoindenting on
+set viminfo=!,'20,\"50  " read/write a .viminfo file, don't store more
+                        " than 50 lines of registers, store globals
+set history=50          " keep 50 lines of command line history
+set dir=/var/tmp,/tmp,.
+set visualbell          " Use a visual bell instead of \a since gvim sucks at \a
+let g:mapleader=" "
+let mapleader=" "
+
+if exists('+undofile')
+  set undodir=~/.vim/undodir
+  set undofile
+end
+
+" When editing a file, always jump to the last cursor position
+autocmd BufReadPost *
+\ if line("'\"") > 0 && line ("'\"") <= line("$") |
+\   exe "normal! g'\"" |
+\ endif
+" }}}2
+
 " ==== Set up Bundles ==== {{{2
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -24,37 +51,6 @@ Bundle 'nvie/vim-flake8'
 
 " Bundle 'dahu/Punisher'
 
-" }}}2
-
-" ==== Sane defaults ==== {{{2
-if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
-   set fileencodings=ucs-bom,utf-8,latin1
-endif
-
-set nocompatible        " Use Vim defaults (much better!)
-set ai                  " always set autoindenting on
-set viminfo=!,'20,\"50  " read/write a .viminfo file, don't store more
-                        " than 50 lines of registers, store globals
-set history=50          " keep 50 lines of command line history
-set dir=/var/tmp,/tmp,.
-set visualbell          " Use a visual bell instead of \a since gvim sucks at \a
-let g:mapleader=" "
-let mapleader=" "
-" set autochdir
-
-if exists('+undofile')
-  set undodir=~/.vim/undodir
-  set undofile
-end
-
-" Pathogen plugin manager
-call pathogen#infect()
-
-" When editing a file, always jump to the last cursor position
-autocmd BufReadPost *
-\ if line("'\"") > 0 && line ("'\"") <= line("$") |
-\   exe "normal! g'\"" |
-\ endif
 " }}}2
 
 " ==== Appearance related variables ==== {{{2
@@ -108,12 +104,8 @@ set nohls               " Don't highlight search results
 " ==== Filetype Sources ==== {{{2
 filetype plugin on
 au! BufNewFile,BufRead *.rb,*.haml,*.erb            source ~/.vim/ftplugin/ruby.vim
-au! BufNewFile,BufRead /home/rrix/Documents/blag    source ~/.vim/plugin/blag.vim
-au! BufNewFile,BufRead /home/rrix/Documents/hslblag source ~/.vim/plugin/hslblag.vim
 
-au! BufNewFile,BufRead *.pde                        set filetype=arduino
-" au! BufNewFile,BufRead *.js,*.json                  set filetype=json
-" au! BufNewFile,BufRead *.md                         set filetype=markdown
+au! BufNewFile,BufRead *.md                         set filetype=markdown
 au! BufNewFile,BufRead *.escad,*.scad               set filetype=openscad
 
 au! FileType ruby,eruby                             set omnifunc=rubycomplete#Complete
@@ -151,14 +143,7 @@ vmap a :Align
 " TODO: Make this smarter with AlignCtrl
 " }}}2
 
-" ==== Abbreviations ==== {{{2
-iab soap save_and_open_page
-" }}}2
-
 " ==== Random Magick ==== {{{2
-" escape on kj
-" imap kj <C-[>
-
 " <leader>e creates an edit command with your current file filled in
 map <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
@@ -182,16 +167,6 @@ set list
 " Convert ruby 1.8-style hashrockets in to 1.9 style
 nmap <Leader>h :s/\:\([a-zA-Z_]*\)\s=>/\1\:/g<cr>
 vmap <Leader>q :Align \s:\l*
-
-" Jetpack http://bairuidahu.deviantart.com/art/Flying-vs-Cycling-261641977
-" nnoremap <Leader>l :ls<CR>:b<space>
-
-" vim-notes Directory
-let g:notes_directory = '~/Dropbox/TapNote'
-let g:notes_suffix = '.txt'
-
-" Vimwiki directory
-let g:vimwiki_list = [{'path': '~/Dropbox/TapNote/'}]
 
 " Ctrl-P settings
 let g:ctrlp_map = '<Leader>l'

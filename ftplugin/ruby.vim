@@ -824,7 +824,7 @@ end # VimRubyCompletion
 RUBYEOF
 endfunction
 
-let s:rubycomplete_rails_loaded = 0
+let s:rubycomplete_rails_loaded = 1
 
 call s:DefRuby()
 "}}} ruby-side code
@@ -832,3 +832,4 @@ call s:DefRuby()
 
 " vim:tw=78:sw=4:ts=8:et:fdm=marker:ft=vim:norl:
 
+iab soap save_and_open_page
