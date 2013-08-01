@@ -1,4 +1,31 @@
 " {{{1
+" ==== Set up Bundles ==== {{{2
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-surround'
+Bundle 'edsono/vim-matchit'
+Bundle 'mileszs/ack.vim'
+Bundle 'peterhoeg/vim-qml'
+
+Bundle 'scrooloose/syntastic'
+Bundle 'kien/ctrlp.vim'
+
+Bundle 'fs111/pydoc.vim'
+Bundle 'ervandew/supertab'
+Bundle 'nvie/vim-flake8'
+
+" Bundle 'dahu/Punisher'
+
+" }}}2
+
 " ==== Sane defaults ==== {{{2
 if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
    set fileencodings=ucs-bom,utf-8,latin1
@@ -181,8 +208,8 @@ let g:ctrlp_user_command = {
 let g:syntastic_python_checkers = ['flake8', 'pep8', 'pyflakes']
 
 " Punish me
-nnoremap <expr> A Penalty('A')
-inoremap <expr> <cr> Punish("\<cr>")
+" nnoremap <expr> A Penalty('A')
+" inoremap <expr> <cr> Punish("\<cr>")
 
 "}}}2
 " }}}1
