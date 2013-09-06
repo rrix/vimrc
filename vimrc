@@ -74,13 +74,13 @@ let g:solarized_termtrans=1
 let g:solarized_menu=1
 let g:solarized_contrast='high'
 let g:solarized_visibility='high'
-set background=dark
+set background=light
 colorscheme solarized
 "colorscheme default
 " }}}3
 
 " Gvim {{{3
-set guifont=OxygenMono
+set guifont="Oxygen Mono 10"
 set guioptions-=T
 " }}}3
 " }}}2
