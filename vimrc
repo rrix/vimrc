@@ -48,6 +48,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'fs111/pydoc.vim'
 Bundle 'ervandew/supertab'
 Bundle 'nvie/vim-flake8'
+Bundle 'eclim'
 
 " Bundle 'dahu/Punisher'
 
