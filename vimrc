@@ -116,7 +116,7 @@ au! FileType ruby,eruby                             let g:rubycomplete_classes_i
 
 " Random bits
 source /home/rrix/dev/3rd-party/kde-devel-scripts/kde-devel-vim.vim
-source ~/.vim/plugin/org.kde.activities.vim
+"source ~/.vim/plugin/org.kde.activities.vim
 " }}}2
 
 " ==== Open the URL under the cursor ==== {{{2
