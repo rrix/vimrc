@@ -6,3 +6,5 @@ map! <F4> <Esc>:!echo %\\|awk -F. '{print $1}'\\|xargs java<CR>
 set makeprg="javac\\ %"
 set errorformat="%A:%f:%l:\\ %m,%-Z%p^,%-C%.%#"
 
+let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
+
